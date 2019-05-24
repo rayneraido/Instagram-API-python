@@ -847,6 +847,13 @@ class InstagramAPI:
                            '_csrftoken': self.token})
         return self.SendRequest('friendships/destroy/' + str(userId) + '/', self.generateSignature(data))
 
+    def remove_follower(self, userId):
+        data = json.dumps({'_uuid': self.uuid,
+                           '_uid': self.username_id,
+                           'user_id': userId,
+                           '_csrftoken': self.token})
+        return self.SendRequest('friendships/remove_follower/' + str(userId) + '/', self.generateSignature(data))
+
     def block(self, userId):
         data = json.dumps({'_uuid': self.uuid,
                            '_uid': self.username_id,
